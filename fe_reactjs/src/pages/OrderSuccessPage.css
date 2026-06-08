@@ -1,0 +1,265 @@
+/* Success Popup Overlay */
+.success-popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(15, 23, 42, 0.55);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    animation: successOverlayIn 0.25s ease-out;
+    padding: 1rem;
+}
+
+.success-popup-card {
+    background: #fff;
+    border-radius: 24px;
+    padding: 2.5rem 2rem 2rem;
+    width: 420px;
+    max-width: 100%;
+    text-align: center;
+    box-shadow: 0 25px 60px -10px rgba(0, 0, 0, 0.3),
+                0 10px 25px -5px rgba(0, 0, 0, 0.1);
+    animation: successCardIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.success-popup-card::before {
+    content: '';
+    position: absolute;
+    top: -60px;
+    left: -60px;
+    right: -60px;
+    height: 140px;
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    border-radius: 50%;
+    opacity: 0.08;
+}
+
+/* Animated check icon */
+.success-popup-icon {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+    color: #059669;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    position: relative;
+    z-index: 1;
+    animation: successIconPop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) 0.1s both;
+    box-shadow: 0 8px 24px rgba(16, 185, 129, 0.3);
+}
+
+.success-popup-icon svg {
+    animation: successCheckDraw 0.5s ease-out 0.35s both;
+}
+
+.success-popup-title {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: #0f172a;
+    margin: 0 0 0.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+.success-popup-desc {
+    color: #64748b;
+    font-size: 0.95rem;
+    line-height: 1.55;
+    margin: 0 0 1.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+.success-popup-code {
+    background: #f0fdf4;
+    border: 2px dashed #86efac;
+    border-radius: 12px;
+    padding: 0.85rem 1rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+.success-popup-code-label {
+    display: block;
+    font-size: 0.75rem;
+    color: #15803d;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.25rem;
+}
+
+.success-popup-code-value {
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: #047857;
+    letter-spacing: 0.05em;
+}
+
+/* Countdown */
+.success-popup-countdown {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    color: #64748b;
+    font-size: 0.9rem;
+    position: relative;
+    z-index: 1;
+}
+
+.success-popup-countdown strong {
+    color: #059669;
+    font-weight: 700;
+    min-width: 14px;
+    display: inline-block;
+    text-align: center;
+}
+
+.success-popup-progress {
+    height: 4px;
+    background: #e5e7eb;
+    border-radius: 999px;
+    margin-top: 1rem;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+}
+
+.success-popup-progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #10b981 0%, #059669 100%);
+    border-radius: 999px;
+    animation: successProgress 3s linear forwards;
+}
+
+.success-popup-skip {
+    margin-top: 1.25rem;
+    background: none;
+    border: none;
+    color: #059669;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    transition: background 0.2s;
+    position: relative;
+    z-index: 1;
+}
+
+.success-popup-skip:hover {
+    background: #f0fdf4;
+}
+
+@keyframes successOverlayIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes successCardIn {
+    from {
+        opacity: 0;
+        transform: scale(0.85) translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+@keyframes successIconPop {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    60% {
+        transform: scale(1.15);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes successCheckDraw {
+    from {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes successProgress {
+    from { width: 100%; }
+    to { width: 0%; }
+}
+
+/* ============================== */
+/* Payment Failed Action Buttons  */
+/* ============================== */
+.failed-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 360px;
+    margin: 0 auto;
+}
+
+.failed-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 14px 24px;
+    border-radius: 14px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    border: none;
+    width: 100%;
+}
+
+.failed-btn-primary {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: #fff;
+    box-shadow: 0 10px 22px -6px rgba(16, 185, 129, 0.45);
+}
+
+.failed-btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 28px -8px rgba(16, 185, 129, 0.55);
+}
+
+.failed-btn-primary:active {
+    transform: translateY(0);
+}
+
+.failed-btn-ghost {
+    background: #f8fafc;
+    color: #475569;
+    border: 1.5px solid #e2e8f0;
+}
+
+.failed-btn-ghost:hover {
+    background: #fff;
+    color: #059669;
+    border-color: #a7f3d0;
+    transform: translateY(-1px);
+}

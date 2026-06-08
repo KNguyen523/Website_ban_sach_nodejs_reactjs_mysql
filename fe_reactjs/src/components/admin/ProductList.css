@@ -1,0 +1,324 @@
+.admin-page-container {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    padding-right: 0.5rem;
+    animation: fadeIn 0.5s ease;
+}
+
+/* If the page has a table-wrapper, the table-wrapper should be the scrollable element, not the container */
+.admin-page-container:has(.table-wrapper) {
+    overflow-y: hidden;
+    padding-right: 0;
+}
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.page-header h1 {
+    font-size: 1.875rem;
+    font-weight: 700;
+}
+
+.page-header p {
+    color: #94a3b8;
+}
+
+.add-btn {
+    background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 12px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.add-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px -5px rgba(59, 130, 246, 0.4);
+}
+
+.table-actions {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    border-radius: 16px;
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    background: rgba(15, 23, 42, 0.6);
+    padding: 0.6rem 1rem;
+    border-radius: 12px;
+    width: 350px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.search-box input {
+    background: transparent;
+    border: none;
+    color: white;
+    margin-left: 0.75rem;
+    width: 100%;
+}
+
+.filter-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #cbd5e1;
+    padding: 0.6rem 1.2rem;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+}
+
+.table-wrapper {
+    flex: 1;
+    overflow-y: auto;
+    border-radius: 20px;
+    background: rgba(30, 41, 59, 0.4);
+}
+
+.table-wrapper::-webkit-scrollbar {
+    width: 6px;
+}
+
+.table-wrapper::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.table-wrapper::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+.table-wrapper::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.admin-table thead {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: #1e293b; /* Dark background for sticky header to prevent transparency issues */
+}
+
+.admin-table th {
+    padding: 1.25rem 1.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    color: #94a3b8;
+    font-weight: 600;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.admin-table td {
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.product-cell {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.product-img {
+    width: 48px;
+    height: 64px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.product-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.product-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.product-title {
+    font-weight: 600;
+    color: #ffffff !important;
+    font-size: 0.9375rem;
+}
+
+.product-id {
+    font-size: 0.75rem;
+    color: #94a3b8;
+}
+
+.status-badge {
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    display: inline-block;
+}
+
+.status-badge.active { background: rgba(16, 185, 129, 0.1); color: #10b981; }
+.status-badge.warning { background: rgba(245, 158, 11, 0.1); color: #f59e0b; }
+.status-badge.error { background: rgba(239, 68, 68, 0.1); color: #ef4444; }
+
+.action-btns {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.action-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    background: rgba(255, 255, 255, 0.05);
+    color: #94a3b8;
+}
+
+.action-btn.view:hover { background: rgba(59, 130, 246, 0.1); color: #3b82f6; }
+.action-btn.edit:hover { background: rgba(16, 185, 129, 0.1); color: #10b981; }
+.action-btn.delete:hover { background: rgba(239, 68, 68, 0.1); color: #ef4444; }
+
+.table-footer {
+    padding: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.pagination-info {
+    font-size: 0.875rem;
+    color: #94a3b8;
+}
+
+.pagination-btns {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.pag-btn, .pag-number {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: transparent;
+    color: white;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.pag-number.active {
+    background: #3b82f6;
+    border-color: #3b82f6;
+}
+
+.pag-btn:hover:not(.disabled), .pag-number:hover:not(.active) {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.pag-btn.disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.header-btns {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.refresh-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #cbd5e1;
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.refresh-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+.add-user-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    height: 42px;
+    padding: 0 18px;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+    color: #fff;
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    box-shadow: 0 8px 18px -6px rgba(59, 130, 246, 0.5);
+}
+
+.add-user-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 12px 22px -8px rgba(99, 102, 241, 0.55);
+}
+
+.add-user-btn:active {
+    transform: translateY(0);
+}
+
+.animate-spin {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.loading-state, .text-center {
+    padding: 3rem;
+    color: #94a3b8;
+    text-align: center;
+    font-size: 1.1rem;
+}

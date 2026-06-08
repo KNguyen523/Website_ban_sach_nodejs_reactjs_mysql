@@ -1,0 +1,311 @@
+.my-orders-page {
+    padding: 3rem 0;
+    background-color: #f8f9fa;
+}
+
+.orders-container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.order-card {
+    background: white;
+    border-radius: 16px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    border: 1px solid #eee;
+    transition: transform 0.2s;
+}
+
+.order-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+}
+
+.order-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #f1f2f6;
+    margin-bottom: 1rem;
+}
+
+.order-id {
+    font-weight: 800;
+    color: #2d3436;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.order-status-badge {
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+/* Status Colors */
+.status-pending { background-color: #fff8e1; color: #ffa000; }
+.status-confirmed { background-color: #e3f2fd; color: #1976d2; }
+.status-shipping { background-color: #e8f5e9; color: #388e3c; }
+.status-delivered { background-color: #f3e5f5; color: #7b1fa2; }
+.status-completed { background-color: #e0f2f1; color: #00796b; }
+.status-cancelled { background-color: #ffebee; color: #d32f2f; }
+
+.order-card-body {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.order-info-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.info-label {
+    font-size: 0.8rem;
+    color: #a4b0be;
+}
+
+.info-value {
+    font-weight: 600;
+    color: #2d3436;
+}
+
+.order-total {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: #e84118;
+}
+
+.order-card-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #f1f2f6;
+}
+
+.btn-detail {
+    padding: 0.6rem 1.2rem;
+    background-color: #f1f2f6;
+    color: #2d3436;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-detail:hover {
+    background-color: #dfe6e9;
+}
+
+.btn-cancel {
+    padding: 0.6rem 1.2rem;
+    background-color: #fff5f5;
+    color: #ff7675;
+    border: 1px solid #ff7675;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-cancel:hover {
+    background-color: #ff7675;
+    color: white;
+}
+
+.btn-confirm-received {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 0.6rem 1.2rem;
+    background-color: #10b981;
+    color: white;
+    border: 1px solid #10b981;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-confirm-received:hover {
+    background-color: #059669;
+    border-color: #059669;
+}
+
+/* Modal */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(15, 23, 42, 0.55);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    animation: cancelOverlayIn 0.2s ease-out;
+}
+
+.modal-content {
+    background: #fff;
+    border-radius: 18px;
+    padding: 0;
+    width: 480px;
+    max-width: 92%;
+    box-shadow: 0 25px 60px -10px rgba(0, 0, 0, 0.25),
+                0 10px 25px -5px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    animation: cancelModalIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Cancel Order Modal */
+.cancel-modal-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1.5rem 1.75rem 1rem;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.cancel-modal-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #dc2626;
+    flex-shrink: 0;
+}
+
+.cancel-modal-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin: 0;
+}
+
+.cancel-modal-body {
+    padding: 1.25rem 1.75rem 0;
+}
+
+.cancel-modal-desc {
+    color: #64748b;
+    font-size: 0.95rem;
+    line-height: 1.55;
+    margin: 0 0 1rem 0;
+}
+
+.cancel-modal-textarea {
+    width: 100%;
+    padding: 0.85rem 1rem;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    font-family: inherit;
+    color: #0f172a;
+    background: #f8fafc;
+    outline: none;
+    resize: vertical;
+    min-height: 90px;
+    transition: all 0.2s ease;
+    box-sizing: border-box;
+}
+
+.cancel-modal-textarea::placeholder {
+    color: #94a3b8;
+}
+
+.cancel-modal-textarea:hover {
+    border-color: #cbd5e1;
+    background: #fff;
+}
+
+.cancel-modal-textarea:focus {
+    border-color: #ef4444;
+    background: #fff;
+    box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.12);
+}
+
+.cancel-modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.75rem;
+    padding: 1.5rem 1.75rem;
+}
+
+.cancel-modal-btn {
+    padding: 0.65rem 1.4rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: 1.5px solid transparent;
+    font-family: inherit;
+}
+
+.cancel-modal-btn-close {
+    background: #fff;
+    color: #475569;
+    border-color: #e2e8f0;
+}
+
+.cancel-modal-btn-close:hover {
+    background: #f1f5f9;
+    color: #0f172a;
+    border-color: #cbd5e1;
+}
+
+.cancel-modal-btn-confirm {
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.25);
+}
+
+.cancel-modal-btn-confirm:hover {
+    box-shadow: 0 6px 18px rgba(220, 38, 38, 0.35);
+    transform: translateY(-1px);
+}
+
+.cancel-modal-btn-confirm:active {
+    transform: translateY(0);
+}
+
+@keyframes cancelOverlayIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes cancelModalIn {
+    from {
+        opacity: 0;
+        transform: scale(0.92) translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .order-card-body {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+}

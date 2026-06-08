@@ -1,0 +1,64 @@
+.section-title {
+  position: relative;
+}
+
+.section-title .title {
+  font-size: 30px;
+  color: var(--text-main);
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.title-icon {
+  display: inline-flex;
+  justify-content: center;
+  width: 40px; /* Fixed width for emoji */
+}
+
+.title-underline {
+  width: 35px; /* Match icon width approximately */
+  height: 4px;
+  background-color: var(--primary);
+  border-radius: 2px;
+  margin-left: 2px; /* Small offset to center under emoji */
+}
+
+.view-all {
+  color: var(--text-muted);
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.view-all:hover {
+  color: var(--primary);
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+}
+
+@media (max-width: 1200px) {
+  .product-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 992px) {
+  .product-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .section-title .title {
+    font-size: 24px;
+  }
+}
